@@ -18,11 +18,11 @@ function drawing() {
     console.log(cell);
     let isDrawing = false;
     cell.forEach(element => element.addEventListener("mousedown", event => {
-        element.style.backgroundColor = "black";
+        element.style.backgroundColor = `${color.value}`;
         isDrawing = true;
         cell.forEach(element => element.addEventListener("mouseover", event => {
             if (isDrawing === true) {
-                element.style.backgroundColor = "black";
+                element.style.backgroundColor = `${color.value}`;
             }
         }));
     }));
@@ -35,14 +35,17 @@ function drawing() {
 //Grid size slider
 var slider = document.getElementById("myRange");
 var output = document.getElementById("rangeValue");
-output.innerHTML = slider.value + "x" + slider.value; // Display the default slider value
+output.innerHTML = "Grid size: " + slider.value + "x" + slider.value; // Display the default slider value
 setupGrid(slider.value);
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = function () {
-    output.innerHTML = this.value + "x" + this.value;
+    output.innerHTML = "Grid size: " + this.value + "x" + this.value;
     grid.innerHTML = "";
     setupGrid(this.value);
 }
 
+
+//Choose a color
+const color = document.querySelector('.color');
 
 
